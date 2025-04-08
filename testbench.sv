@@ -25,7 +25,7 @@ module tb ();
         .PENABLE(apb_if.penable),
         .PRDATA(apb_if.prdata),
         .PREADY(apb_if.pready),
-        .PSLVERR(apb_if.pslverr),
+        .PSLVERR(apb_if.pslverr)
 
         // Add 3 more signals
     );
