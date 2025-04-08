@@ -1,19 +1,10 @@
-import uvm_pkg::*;
-
-
-`include "uvm_macros.svh"
-`include "interface.sv"
-`include "seq_item.sv"
-`include "sequence.sv"
-`include "sequencer.sv"
-`include "driver.sv"
-`include "monitor.sv"
-`include "agent.sv"
-`include "scoreboard.sv"
-`include "env.sv"
-`include "rand_test.sv"
+`include "test_pkg.sv"
 
 module tb ();
+
+    import uvm_pkg::*;
+    import test_pkg::*;
+
 
     logic clk;
 
@@ -22,13 +13,26 @@ module tb ();
         forever #10 clk = ~clk;
     end
 
-    intf vif ();
+    apb_intf apb_if (.clk(clk));
 
-    // ? STEP 10: Declare DUT
-    // dut_design_name dut ();
+    apb_uart_sv dut (
+        .CLK(clk),
+        .RSTN(apb_if.reset_n),
+        .PADDR(apb_if.paddr),
+        .PWDATA(apb_if.pwdata),
+        .PWRITE(apb_if.pwrite),
+        .PSEL(apb_if.psel),
+        .PENABLE(apb_if.penable),
+        .PRDATA(apb_if.prdata),
+        .PREADY(apb_if.pready),
+        .PSLVERR(apb_if.pslverr),
+
+        // Add 3 more signals
+    );
 
     initial begin
-        uvm_config_db#(virtual intf)::set(null, "uvm_test_top*", "vif", vif);
+        uvm_config_db#(virtual apb_intf)::set(null, "uvm_test_top*", "apb_if",
+                                              apb_if);
         // ? Change uvm_test name here or you can do this from command line as well
         run_test("rand_test");
     end
