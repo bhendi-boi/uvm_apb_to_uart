@@ -3,7 +3,7 @@
 `endif
 
 interface apb_intf (
-    input logic clk
+    input logic pclk
 );
 
     logic reset_n;

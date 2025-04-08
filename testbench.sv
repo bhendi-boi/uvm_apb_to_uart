@@ -13,7 +13,7 @@ module tb ();
         forever #10 clk = ~clk;
     end
 
-    apb_intf apb_if (.clk(clk));
+    apb_intf apb_if (.pclk(clk));
 
     apb_uart_sv dut (
         .CLK(clk),
