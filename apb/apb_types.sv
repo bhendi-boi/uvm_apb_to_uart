@@ -1,0 +1,1 @@
+`define APB_ADDR_WIDTH 12
