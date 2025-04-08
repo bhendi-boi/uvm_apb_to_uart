@@ -1,0 +1,5 @@
+`include "./design/uart_tx.sv"
+`include "./design/uart_rx.sv"
+`include "./design/uart_interrupt.sv"
+`include "./design/io_generic_fifo.sv"
+`include "./design/apb_uart_sv.sv"
