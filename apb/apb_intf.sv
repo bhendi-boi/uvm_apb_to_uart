@@ -11,6 +11,7 @@ interface apb_intf (
     logic [31:0] pwdata;
     logic psel;
     logic pwrite;
+    logic pready;
     logic penable;
     logic prdata;
     logic pslverr;
