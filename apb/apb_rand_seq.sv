@@ -1,7 +1,7 @@
 class apb_rand_seq extends uvm_sequence;
     `uvm_object_utils(apb_rand_seq)
 
-    rand apb_transaction;
+    rand apb_transaction tr;
     int no_of_tr;
 
     function void set_no_of_tr(int no_of_tr);
@@ -19,10 +19,10 @@ class apb_rand_seq extends uvm_sequence;
         `uvm_info("APB Rand sequence", "Constructed apb_rand_seq", UVM_HIGH)
     endfunction
 
-    task body ();
+    task body();
         tr = apb_transaction::type_id::create("tr");
 
-        repeat(this.no_of_tr)begin
+        repeat (this.no_of_tr) begin
             start_item(tr);
             if (!tr.randomize())
                 `uvm_fatal("APB Rand sequence", "Randomisation failed")
