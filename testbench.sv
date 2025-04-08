@@ -13,6 +13,12 @@ module tb ();
         forever #10 clk = ~clk;
     end
 
+    initial begin
+        apb_if.reset_n = 1;
+        #10 apb_if.reset_n = 0;
+        #5 apb_if.reset_n = 1;
+    end
+
     apb_intf apb_if (.pclk(clk));
 
     apb_uart_sv dut (

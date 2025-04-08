@@ -23,6 +23,9 @@ class apb_drv extends uvm_driver #(apb_transaction);
         super.run_phase(phase);
         `uvm_info("APB_Driver", "Run phase driver", UVM_HIGH)
         tr = apb_transaction::type_id::create("tr");
+        reset_dut();
+
+        wait (vif.preset_n);
 
         forever begin
             seq_item_port.get_next_item(tr);
