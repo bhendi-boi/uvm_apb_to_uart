@@ -2,7 +2,7 @@ class rand_test extends uvm_test;
     `uvm_component_utils(rand_test)
 
     env environment;
-    // ? STEP 9: Declare sequences
+    apb_rand_seq r0;
 
     function new(string name = "rand_test", uvm_component parent);
         super.new(name, parent);
@@ -11,7 +11,7 @@ class rand_test extends uvm_test;
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        `uvm_info("Rand Test", "Build phase environment", UVM_HIGH)
+        `uvm_info("Rand Test", "Build phase Rand Test", UVM_HIGH)
         environment = env::type_id::create("env", this);
     endfunction
 
@@ -19,16 +19,11 @@ class rand_test extends uvm_test;
         super.run_phase(phase);
         phase.raise_objection(this);
 
-        // ? instantiate sequences
+        r0 = apb_rand_seq::type_id::create("apb_rand_seq");
 
-        // Set no of transaction a sequence should generate
-        //  example syntax
-        // dummy_sequence.set_no_of_tr(1024);
+        r0.set_no_of_tr(2);
 
-        // ? start them on sequencer
-        // dummy_seqence.start(environment.agent.sequencer);
-
-        // ? add any extra simulation delay
+        r0.start(environment.apb_agent.sequencer);
 
         phase.drop_objection(this);
     endtask
