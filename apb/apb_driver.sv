@@ -25,6 +25,7 @@ class apb_drv extends uvm_driver #(apb_transaction);
         tr = apb_transaction::type_id::create("tr");
         reset_dut();
 
+        @(posedge vif.pclk);
         wait (vif.reset_n);
 
         forever begin
