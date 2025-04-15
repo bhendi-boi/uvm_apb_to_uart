@@ -1,4 +1,5 @@
 `include "test_pkg.sv"
+`include "uart/uart_intf.sv"
 
 module tb ();
 
@@ -20,6 +21,7 @@ module tb ();
     end
 
     apb_intf apb_if (.pclk(clk));
+    uart_intf uart_if();
 
     apb_uart_sv dut (
         .CLK(clk),
@@ -33,7 +35,9 @@ module tb ();
         .PREADY(apb_if.pready),
         .PSLVERR(apb_if.pslverr)
 
-        // Add 3 more signals
+        .rx_i(uart_if.rx_i),
+        .tx_o(uart_if.tx_o),
+        .event_o(uart_if.event_o),
     );
 
     initial begin
