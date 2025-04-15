@@ -1,17 +1,5 @@
-class apb_rand_seq extends uvm_sequence;
+class apb_rand_seq extends apb_base_seq;
     `uvm_object_utils(apb_rand_seq)
-
-    rand apb_transaction tr;
-    int no_of_tr;
-
-    function void set_no_of_tr(int no_of_tr);
-        this.no_of_tr = no_of_tr;
-    endfunction
-
-    function int get_no_of_tr();
-        return this.no_of_tr;
-    endfunction
-
 
     function new(string name = "apb_rand_seq");
         super.new(name);
