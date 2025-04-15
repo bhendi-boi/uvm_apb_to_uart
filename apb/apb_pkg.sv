@@ -12,6 +12,7 @@ package apb_pkg;
     `include "apb_coverage.sv"
     `include "apb_agent.sv"
 
+    `include "apb_base_seq.sv"
     `include "apb_rand_seq.sv"
 
 endpackage
