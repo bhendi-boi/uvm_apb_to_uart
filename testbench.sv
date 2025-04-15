@@ -21,7 +21,7 @@ module tb ();
     end
 
     apb_intf apb_if (.pclk(clk));
-    uart_intf uart_if();
+    uart_intf uart_if ();
 
     apb_uart_sv dut (
         .CLK(clk),
@@ -33,11 +33,11 @@ module tb ();
         .PENABLE(apb_if.penable),
         .PRDATA(apb_if.prdata),
         .PREADY(apb_if.pready),
-        .PSLVERR(apb_if.pslverr)
+        .PSLVERR(apb_if.pslverr),
 
         .rx_i(uart_if.rx_i),
         .tx_o(uart_if.tx_o),
-        .event_o(uart_if.event_o),
+        .event_o(uart_if.event_o)
     );
 
     initial begin
