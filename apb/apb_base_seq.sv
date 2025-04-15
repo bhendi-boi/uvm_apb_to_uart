@@ -16,7 +16,7 @@ class apb_base_seq extends uvm_sequence;
     function new(string name = "apb_base_seq");
         super.new(name);
         set_no_of_tr(1);
-        `uvm_info("APB Base sequence", "Constructed apb_rand_seq", UVM_HIGH)
+        `uvm_info("APB Base sequence", "Constructed apb_base_seq", UVM_HIGH)
     endfunction
 
     task body();
