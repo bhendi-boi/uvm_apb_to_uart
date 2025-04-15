@@ -59,7 +59,8 @@ class apb_drv extends uvm_driver #(apb_transaction);
         vif.penable <= 1'b1;
 
         // access
-        @(negedge vif.pready);
+        @(posedge vif.clk);
+        // we are guarenteed to get a pready
         vif.penable <= 1'b0;
 
     endtask
