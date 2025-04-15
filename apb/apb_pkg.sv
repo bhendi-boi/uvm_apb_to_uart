@@ -14,6 +14,6 @@ package apb_pkg;
 
     `include "apb_base_seq.sv"
     `include "apb_rand_seq.sv"
-    `includr "apb_write_seq.sv"
+    `include "apb_write_seq.sv"
 
 endpackage
