@@ -1,7 +1,7 @@
 class apb_write_seq extends apb_base_seq;
     `uvm_object_utils(apb_write_seq)
 
-    constraint write_tr {this.dir == 1;}
+    constraint write_tr {this.tr.dir == 1;}
 
     function new(string name = "apb_base_seq");
         super.new(name);
